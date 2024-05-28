@@ -58,21 +58,33 @@ public class Array {
             }
         }
     }
-    public int indexOf(int index){
+    public int indexOf(int number){
 
-        if(!(index>=size)){
-            int number = this.array[index];
-            Arrays.sort(this.array);
-            if(number<array[size/2]){
+        if(!(number>=size)){
+              int left = 0;
+              int right = array.length-1;
+              Arrays.sort(array);
+              while(left <= right){
+                  int mid = (left+right)/2;
 
-            }
+                  if(array[mid]==number){
+                      return mid;
+                  }
+                  if(number<array[mid])
+                      right = mid;
+                  else
+                      left = mid;
+              }
 
         }
         return -1;
     }
     public void print(){
-        for(int number:this.array)
-            System.out.println(number);
+        System.out.print("{");
+        for(int number:this.array) {
+            System.out.print(number + " ");
+        }
+        System.out.print("}");
     }
     static boolean isFull (int[] arr, int size ){
         int count =0;
